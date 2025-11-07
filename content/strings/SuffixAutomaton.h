@@ -52,4 +52,13 @@ struct SuffixAutomaton {
         }
         last = cur;
     }
+    // st[i].len - st[st[i].link].len gives the number of different substrings starting from node i
+    // example calculates the number of different substrings
+    int sa_count_str() {
+        int rez = 0;
+        for(int i=sz-1;i>=1;i--) {
+            rez += st[i].len - st[st[i].link].len; 
+        }
+        return rez;
+    }
 };
